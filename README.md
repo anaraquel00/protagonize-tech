@@ -1,93 +1,62 @@
-DESAFIO TÉCNICO – BOOTCAMP WEB FRONT (ANGULAR + ASP.NET)
-Objetivo
-Desenvolver uma aplicação web simples para cadastro e gerenciamento de tarefas,
-utilizando Angular no front-end, ASP.NET Core Web API no back-end e SQL
-Server como banco de dados.
-O objetivo do desafio é avaliar conhecimentos básicos de desenvolvimento web,
-integração front-end e back-end, e lógica de programação, considerando um nível
-júnior.
+# 🛡️ Desafio Técnico - Bootcamp Web Front (Avanade)
 
-Tecnologias obrigatórias
- Front-end: Angular
- Back-end: ASP.NET Core Web API (C#)
- Banco de dados: SQL Server
- ORM: Entity Framework Core
- Comunicação: API REST (JSON)
+Aplicação web desenvolvida para o cadastro e gerenciamento de tarefas, integrando um front-end em Angular com um back-end robusto em ASP.NET Core Web API, utilizando SQL Server para persistência de dados.
 
-Escopo do Projeto
-Entidade principal: Tarefa
-A aplicação deverá trabalhar com a entidade Tarefa, contendo os seguintes campos:
-Campo Tipo
-Id int (gerado
-automaticamente)
+## 💻 Tecnologias Utilizadas
+* **Front-end:** Angular
+* **Back-end:** ASP.NET Core Web API (C# .NET 8)
+* **Banco de Dados:** SQL Server
+* **ORM:** Entity Framework Core
+* **Comunicação:** API REST (JSON)
 
-Título string
-Descrição string
-Status string (Pendente /
-Concluída)
+## ⚙️ Funcionalidades Implementadas
+* **CRUD Completo:** Criação, Listagem, Atualização e Exclusão de tarefas.
+* **Entidade Principal:** Tarefa (Id, Título, Descrição, Status, Data de Criação).
+* **Integração:** Consumo da API utilizando o `HttpClient` no Angular.
+* **Diferenciais:** Código limpo, CORS configurado para integração segura e arquitetura isolada entre componentes e serviços.
 
-Data de
-Criação DateTime
+## 🚀 Instruções de Execução
 
-Funcionalidades obrigatórias
-Back-end (API)
- Criar uma API REST para gerenciar tarefas
- Implementar os seguintes endpoints:
-o GET – Listar todas as tarefas
+### Pré-requisitos
+Certifique-se de ter os seguintes componentes instalados no seu ambiente:
+* [.NET 8.0 SDK](https://dotnet.microsoft.com/download)
+* [Node.js](https://nodejs.org/) (Recomendado versão LTS)
+* [Angular CLI](https://angular.io/cli) (`npm install -g @angular/cli`)
+* Instância do SQL Server rodando localmente (ou via Docker).
 
-o GET/{id} – Buscar tarefa por ID
-o POST – Criar nova tarefa
-o PUT/{id} – Atualizar uma tarefa
-o DELETE/{id} – Excluir uma tarefa
- Persistir os dados no SQL Server
- Utilizar Entity Framework Core
+### 1. Configurando e Rodando o Back-end (API C#)
+* Abra um terminal e navegue até a pasta raiz do projeto back-end (onde está o arquivo `TarefasApi.csproj`).
+* Verifique a *Connection String* no arquivo `appsettings.json` e ajuste as credenciais do seu SQL Server, se necessário.
+* Restaure as dependências do projeto:
+   ```bash
+   dotnet restore
 
-Front-end (Angular)
- Tela para listar tarefas
- Tela/formulário para criar tarefa
- Possibilidade de editar tarefa
- Possibilidade de excluir tarefa
- Consumo da API utilizando HttpClient
- Organização básica em componentes e services
+* Crie a tabela no banco de dados aplicando as Migrations do Entity Framework Core:
 
-Requisitos não obrigatórios (opcionais)
-(Não eliminam se não forem feitos)
- Validação simples de formulário
- Mensagens de sucesso ou erro
- Filtro de tarefas por status
- Layout simples (não será avaliado design avançado)
+    dotnet ef database migrate
 
-Critérios de Avaliação
-Os candidatos serão avaliados com base nos seguintes critérios:
-Obrigatórios
- Funcionamento correto do CRUD
- Comunicação entre Angular e API
- Organização básica do código
- Uso correto de HTTP (GET, POST, PUT, DELETE)
- Projeto compila e executa corretamente
+* Inicie o servidor da API:
+   ```bash
+   dotnet run
+      
+* Verifique no terminal a porta alocada (geralmente http://localhost:5001 ou http://localhost:5260). O Swagger pode ser acessado na rota /swagger.
 
-Diferenciais (não obrigatórios)
+### 2. Configurando e Rodando o Front-end (Angular)
+* Abra um novo terminal e navegue até a pasta do front-end (tarefas-app).
 
- Código limpo e bem organizado
- Validações básicas
- Tratamento simples de erros
- README explicando como rodar o projeto
- Commits organizados no Git
+* Atualize a variável apiUrl no arquivo tarefa.service.ts para apontar para a porta correta onde o backend está rodando, caso difira do padrão configurado.
 
-O que não será avaliado
- Design avançado
- Autenticação / login
- Arquitetura complexa
- Padrões avançados (DDD, CQRS, etc.)
+* Instale as dependências do Node:
+      
+```bash
+   npm install 
+   ```
 
-Carga horária estimada
-80 horas, distribuídas entre:
- Planejamento
- Desenvolvimento back-end
- Desenvolvimento front-end
- Integração
- Ajustes finais
+* Inicie o servidor de desenvolvimento do Angular:
 
-Entrega
- Código-fonte em repositório Git (GitHub, GitLab ou similar)
- README com instruções para execução do projeto
+```bash
+   ng serve
+   ```
+* Abra o seu navegador e acesse a interface em: http://localhost:4200.
+
+Desenvolvido por Ana Raquel.
