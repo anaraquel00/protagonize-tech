@@ -1,0 +1,25 @@
+<div>
+  <h2>Minhas Tarefas</h2>
+
+  <div *ngIf="tarefas.length === 0">
+    <p>Nenhuma tarefa cadastrada ainda.</p>
+  </div>
+
+  <ul style="list-style: none; padding: 0;">
+    <li *ngFor="let tarefa of tarefas" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+      <h3 style="margin-top: 0;">{{ tarefa.titulo }} <span style="font-size: 0.8em; color: #666;">({{ tarefa.status }})</span></h3>
+      <p>{{ tarefa.descricao }}</p>
+
+      <button
+        *ngIf="tarefa.status === 'Pendente'"
+        (click)="concluir(tarefa)"
+        style="margin-right: 10px; background-color: #4CAF50; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px;">
+        ✓ Concluir
+      </button>
+
+      <button (click)="excluir(tarefa.id)" style="background-color: #f44336; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 4px;">
+        ✗ Excluir
+      </button>
+    </li>
+  </ul>
+</div>
